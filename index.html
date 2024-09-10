@@ -9,42 +9,82 @@
 </head>
 
 <body>
+    <div class="wrapper">
+        <select id="courseSelection" onchange="courseSelection()">
+            <option value="invalid">Select Course</option>
+            <option value="MCA">MCA SEM 2</option>
+            <option value="MSC">MSc SEM 2</option>
+        </select>
+        <div class="container">
+            <h2>CGPA Calculator MCA SEM 2</h2>
 
-    <div class="container">
-        <h2>CGPA Calculator MCA SEM 2</h2>
+            <label for="dbmsTheory">DBMS Theory Marks:</label>
+            <input type="number" id="dbmsTheory" placeholder="Enter DBMS Theory Marks">
 
-        <label for="dbmsTheory">DBMS Theory Marks:</label>
-        <input type="number" id="dbmsTheory" placeholder="Enter DBMS Theory Marks">
+            <label for="dbmsPractical">DBMS Practical Marks:</label>
+            <input type="number" id="dbmsPractical" placeholder="Enter DBMS Practical Marks">
 
-        <label for="dbmsPractical">DBMS Practical Marks:</label>
-        <input type="number" id="dbmsPractical" placeholder="Enter DBMS Practical Marks">
+            <label for="aiTheory">AI Theory Marks:</label>
+            <input type="number" id="aiTheory" placeholder="Enter AI Theory Marks">
 
-        <label for="aiTheory">AI Theory Marks:</label>
-        <input type="number" id="aiTheory" placeholder="Enter AI Theory Marks">
+            <label for="annTheory">Major Elective 1 Theory:</label>
+            <input type="number" id="annTheory" placeholder="Major Elective 1 Theory">
 
-        <label for="annTheory">Major Elective 1 Theory:</label>
-        <input type="number" id="annTheory" placeholder="Major Elective 1 Theory">
+            <label for="annPractical">Major Elective 1 Practical:</label>
+            <input type="number" id="annPractical" placeholder="Major Elective 1 Practical">
 
-        <label for="annPractical">Major Elective 1 Practical:</label>
-        <input type="number" id="annPractical" placeholder="Major Elective 1 Practical">
+            <label for="blockchainTheory">Major Elective 2 Theory:</label>
+            <input type="number" id="blockchainTheory" placeholder="Major Elective 2 Theory">
 
-        <label for="blockchainTheory">Major Elective 2 Theory:</label>
-        <input type="number" id="blockchainTheory" placeholder="Major Elective 2 Theory">
+            <label for="blockchainPractical">Major Elective 2 Practical:</label>
+            <input type="number" id="blockchainPractical" placeholder="Major Elective 2 Practical">
 
-        <label for="blockchainPractical">Major Elective 2 Practical:</label>
-        <input type="number" id="blockchainPractical" placeholder="Major Elective 2 Practical">
+            <label for="fuzzyLogicTheory">NPTEL:</label>
+            <input type="number" id="fuzzyLogicTheory" placeholder="NPTEL">
 
-        <label for="fuzzyLogicTheory">NPTEL:</label>
-        <input type="number" id="fuzzyLogicTheory" placeholder="NPTEL">
+            <button onclick="calculateCGPAMCA()">Calculate CGPA</button>
 
-        <button onclick="calculateCGPA()">Calculate CGPA</button>
+            <div class="result" id="result"></div>
+        </div>
+        <div class="container2">
+            <h2>CGPA Calculator MSc SEM 2</h2>
 
-        <div class="result" id="result"></div>
+            <label for="daa">DAA Theory Marks:</label>
+            <input type="number" id="daa" placeholder="Enter DAA Theory Marks">
+
+            <label for="daap">DAA Practical Marks:</label>
+            <input type="number" id="daap" placeholder="Enter DAA Practical Marks">
+
+            <label for="ai">AI Theory Marks:</label>
+            <input type="number" id="ai" placeholder="Enter AI Theory Marks">
+
+            <label for="ann">Major Elective 1 Theory:</label>
+            <input type="number" id="ann" placeholder="Major Elective 1 Theory">
+
+            <label for="annp">Major Elective 1 Practical:</label>
+            <input type="number" id="annp" placeholder="Major Elective 1 Practical">
+
+            <label for="bc">Major Elective 2 Theory:</label>
+            <input type="number" id="bc" placeholder="Major Elective 2 Theory">
+
+            <label for="bcp" >Major Elective 2 Practical:</label>
+            <input type="number" id="bcp" placeholder="Major Elective 2 Practical">
+
+            <label for="tw">Technical Writing:</label>
+            <input type="number" id="tw" placeholder="Technical Writing">
+
+            <label for="nptel">NPTEL:</label>
+            <input type="number" id="nptel" placeholder="NPTEL">
+
+            <button onclick="calculateCGPAMSC()">Calculate CGPA</button>
+
+            <div class="result" id="result2"></div>
+        </div>
     </div>
 
     <script>
         function calculateGradePoints(marks) {
-            if(!marks) return 0;
+            if (!marks) return 0;
             if (marks >= 90) return 10;
             else if (marks >= 80) return 9;
             else if (marks >= 70) return 8;
@@ -54,8 +94,9 @@
             else return 0;
         }
 
-        function calculateCGPA() {
+        function calculateCGPAMCA() {
             // Retrieve input values
+            
             const dbmsTheoryMarks = parseFloat(document.getElementById('dbmsTheory').value) * 0.66;
             const dbmsPracticalMarks = parseFloat(document.getElementById('dbmsPractical').value) * 0.34;
             const aiTheoryMarks = parseFloat(document.getElementById('aiTheory').value);
@@ -64,6 +105,7 @@
             const blockchainTheoryMarks = parseFloat(document.getElementById('blockchainTheory').value) * 0.75;
             const blockchainPracticalMarks = parseFloat(document.getElementById('blockchainPractical').value) * 0.25;
             const fuzzyLogicTheoryMarks = parseFloat(document.getElementById('fuzzyLogicTheory').value);
+            // const technicalWritingMarks = parseFloat(document.getElementById("technicalWriting")).value;
 
             // Convert marks to grade points
             const dbmsTheoryGrade = calculateGradePoints(dbmsTheoryMarks + dbmsPracticalMarks);
@@ -75,20 +117,85 @@
             // const blockchainPracticalGrade = calculateGradePoints(blockchainPracticalMarks);
             const fuzzyLogicTheoryGrade = calculateGradePoints(fuzzyLogicTheoryMarks);
 
+            // const technicalWritingGrade=calculateGradePoints(technicalWritingMarks);
             // Calculate total weighted grade points
             const totalGradePoints = (dbmsTheoryGrade * 6) +
                 (aiTheoryGrade * 4) + (annTheoryGrade * 4) +
                 (blockchainTheoryGrade * 4) +
                 + (fuzzyLogicTheoryGrade * 2);
 
+
             // Calculate total credits
             const totalCredits = 4 + 2 + 4 + 3 + 1 + 3 + 1 + 2;
 
             // Calculate CGPA
             const cgpa = totalGradePoints / totalCredits;
-
+            
             // Display result
             document.getElementById('result').innerHTML = "Your CGPA is: " + cgpa.toFixed(2);
+        }
+        function calculateCGPAMSC() {
+            // Retrieve input values
+            
+            const daa = parseFloat(document.getElementById('daa').value) * 0.66;
+            const daap = parseFloat(document.getElementById('daap').value) * 0.34;
+            const ai = parseFloat(document.getElementById('ai').value);
+            const ann = parseFloat(document.getElementById('ann').value) * 0.75;
+            const annp = parseFloat(document.getElementById('annp').value) * 0.25;
+            const bc = parseFloat(document.getElementById('bc').value) * 0.75;
+            const bcp = parseFloat(document.getElementById('bcp').value) * 0.25;
+            const tw = parseFloat(document.getElementById("tw").value);
+            const nptel = parseFloat(document.getElementById('nptel').value);
+            // const technicalWritingMarks = parseFloat(document.getElementById("technicalWriting")).value;
+
+            // Convert marks to grade points
+            const dbmsTheoryGrade = calculateGradePoints(daa + daap);
+            // const dbmsPracticalGrade = calculateGradePoints(dbmsPracticalMarks);
+            const aiTheoryGrade = calculateGradePoints(ai);
+            const annTheoryGrade = calculateGradePoints(ann + annp);
+            // const annPracticalGrade = calculateGradePoints(annPracticalMarks);
+            const blockchainTheoryGrade = calculateGradePoints(bc + bcp);
+            // const blockchainPracticalGrade = calculateGradePoints(blockchainPracticalMarks);
+            const fuzzyLogicTheoryGrade = calculateGradePoints(nptel);
+            const technicalWriting = calculateGradePoints(tw);
+
+            // const technicalWritingGrade=calculateGradePoints(technicalWritingMarks);
+            // Calculate total weighted grade points
+            const totalGradePoints = (dbmsTheoryGrade * 4) +
+                (aiTheoryGrade * 4) + (annTheoryGrade * 4) +
+                (blockchainTheoryGrade * 4) +
+                + (fuzzyLogicTheoryGrade * 2) + (technicalWriting * 2);
+
+
+            // Calculate total credits
+            const totalCredits = 20;
+
+            // Calculate CGPA
+            const cgpa = totalGradePoints / totalCredits;
+            
+            // Display result
+            document.getElementById('result2').innerHTML = "Your CGPA is: " + cgpa.toFixed(2);
+        }
+        function courseSelection(){
+            let val = document.getElementById("courseSelection").value;
+            // console.log(courseSelection.value);
+            console.log(val);
+            if(val === "MCA"){
+                const list = document.getElementsByClassName("container");
+                // console.log(list[0]);
+                
+                const rem = document.getElementsByClassName("container2");
+                list[0].classList.add("active");
+                rem[0].classList.remove("active");
+                return;
+            }
+            if(val === "MSC"){
+                const list = document.getElementsByClassName("container2");
+                const rem = document.getElementsByClassName("container");
+                list[0].classList.add("active");
+                rem[0].classList.remove("active");
+                return;
+            }
         }
     </script>
 
