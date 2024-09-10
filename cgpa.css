@@ -45,6 +45,7 @@ body {
     font-weight: bold;
     background-color: #28a745;
     color: white;
+    border-radius: 5px;
 }
 h2 {
     text-align: center;
@@ -105,3 +106,17 @@ button:hover {
     color: #333;
     font-weight: 600;
 }
+/* Default styling for larger screens */
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Media query for mobile devices (max-width 768px) */
+  @media screen and (max-width: 768px) {
+    .wrapper {
+      width: 90%;  /* Full width for mobile devices */
+      padding: 0 10px;  /* Optional padding to add some space around the content */
+    }
+  }
+  
