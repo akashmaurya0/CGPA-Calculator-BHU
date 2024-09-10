@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="nav"><h2>MCA/MSC CGPA CALCULATOR</h2></div>
     <div class="wrapper">
         <select id="courseSelection" onchange="courseSelection()">
             <option value="invalid">Select Course</option>
@@ -137,8 +138,8 @@
         function calculateCGPAMSC() {
             // Retrieve input values
             
-            const daa = parseFloat(document.getElementById('daa').value) * 0.66;
-            const daap = parseFloat(document.getElementById('daap').value) * 0.34;
+            const daa = parseFloat(document.getElementById('daa').value) * 0.75;
+            const daap = parseFloat(document.getElementById('daap').value) * 0.25;
             const ai = parseFloat(document.getElementById('ai').value);
             const ann = parseFloat(document.getElementById('ann').value) * 0.75;
             const annp = parseFloat(document.getElementById('annp').value) * 0.25;
