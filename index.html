@@ -44,6 +44,7 @@
 
     <script>
         function calculateGradePoints(marks) {
+            if(!marks) return 0;
             if (marks >= 90) return 10;
             else if (marks >= 80) return 9;
             else if (marks >= 70) return 8;
